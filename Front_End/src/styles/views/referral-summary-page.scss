@@ -1,0 +1,49 @@
+.referralSummary_card{
+    @extend .card;
+    font-size:10rem;
+    width: 500px;
+   padding:1rem 1rem 1rem 1rem;
+    .expenses_list{
+        ul{
+            display: flex;
+            flex-direction: column;
+            .title_row{
+                margin-bottom: 1rem;
+                border-bottom: none;
+            }
+            .user_row{
+                background-color: $light-Green;
+            }
+            li{ 
+                font-weight: bold;
+                display: flex;
+                align-items: flex-end;
+                border-radius: 1.5rem;
+                
+               padding-bottom: 1.4rem;
+               padding-top: 1.4rem;
+               margin-bottom:1rem;
+                &:last-child{
+                    border-bottom: none;
+                }
+                p{
+                    margin:0 2rem;
+                    font-size: 1.6rem;
+                    
+                }
+                .title{
+                    font-size: 1.4rem;
+                }
+                .name_column{
+                    text-align: left;
+                }
+                .invitation_column{
+                    text-align: left;
+                }
+                .total_column{
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

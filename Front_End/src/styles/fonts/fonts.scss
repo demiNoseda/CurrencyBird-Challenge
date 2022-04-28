@@ -1,0 +1,66 @@
+@font-face {
+    font-family: Circular Std;
+    src: url(../../assets/fonts/CircularStd-Book.ttf)
+  }
+
+//-----Text------
+span{
+  font-weight: bold;
+}
+.title_bg{
+  font-size: 4rem;
+  span{
+      font-size:  4rem;
+  }
+}
+.title_md{
+  font-size: 2.4rem;
+  span{
+      font-size:  2.4rem;
+  }
+}
+.title_sm{
+  font-size: 1.8rem;
+  span{
+      font-size:  1.8rem;
+  }
+}
+.text_bg{
+  font-size: 1.6rem;
+  span{
+      font-size:  1.6rem;
+  }
+}
+.text_md{
+  font-size: 1.4rem;
+  span{
+      font-size:  1.4rem;
+  }
+}
+.text_sm{
+  font-size: 1.2rem;
+  span{
+      font-size:  1.2rem;
+  }
+}
+
+@media (min-width: $min-width-rs) { 
+  .title_md{
+    font-size: 4rem;
+    span{
+        font-size:  4rem;
+    }
+  }
+  .text_md{
+    font-size: 2.4rem;
+    span{
+        font-size:  2.4rem;
+    }
+  }
+  .text_bg{
+    font-size: 2.4rem;
+    span{
+        font-size:  2.4rem;
+    }
+  }
+}

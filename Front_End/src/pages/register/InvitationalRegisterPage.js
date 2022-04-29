@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import RegisterForm from "./components/RegisterForm";
 
 const InvitationalRegisterPage = () => {
-  let { invitationId } = useParams();
+  let { invitationSerial } = useParams();
 
-  return <RegisterForm invitationId={invitationId} />;
+  return <RegisterForm invitationSerial={invitationSerial} />;
 };
 
 export default InvitationalRegisterPage;

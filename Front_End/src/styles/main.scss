@@ -7,6 +7,7 @@
   body{
     background-color: #dad5d5da;
   }
+
  main {
     font-family: Circular Std;
   }
@@ -14,70 +15,56 @@
 
 
 
-  @media (min-width: 710px) { 
+
+  // @media (min-width: 710px) { 
  
-  }
+  // }
   
-  .MuiAvatar-img{
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-    font-size: 1.25rem;
-    font-family: 'Montserrat';
-    line-height: 1;
-    user-select: none;
-    box-sizing: inherit;
-    color: transparent;
-    width: 40%;
-    height: 100%;
-    object-fit: cover;
-    text-align: center;
-    text-indent: 10000px;
-  }
+  // .MuiAvatar-img{
+  //   -webkit-font-smoothing: antialiased;
+  //   font-weight: 400;
+  //   font-size: 1.25rem;
+  //   font-family: 'Montserrat';
+  //   line-height: 1;
+  //   user-select: none;
+  //   box-sizing: inherit;
+  //   color: transparent;
+  //   width: 40%;
+  //   height: 100%;
+  //   object-fit: cover;
+  //   text-align: center;
+  //   text-indent: 10000px;
+  // }
 
 
 //--------- Variables --------------
 $main-green:#1A9986;
 $white-bg:#fafafa;
 $light-gray:#E5E5E5;
-$dark-gray: #8F8F8F;
 $card-background:#36ADAC;
-$main-pink:#F37F80;
-$light-blue: #55A6D3;
 $main-yellow: #F9B234;
 $light-Green:#C8E9E2;
-$dark-Green:#1E7368;
-$min-width-rs: 710px;
+$max-width-rs: 710px;
 $main-blue:#074F71;
-$error:#ED4337;
+$dark-gray: #8F8F8F;
 
+@media (max-width: $max-width-rs) { 
+}
 //--------- Fonts --------------
 @import "./fonts/fonts.scss";
 
 
 
 // //--------- Views --------------
-// @import "./views/home-page.scss";
 @import "./views/referral-Invitation-page.scss";
 @import "./views/referral-summary-page.scss";
 @import "./views/register-page.scss";
+
 // //--------- Layout --------------
-// @import "./layout/emojis_styles.scss";
 @import "./layout/card_styles.scss";
 
 // //--------- Componentes --------------
-@import "./components/Spinner.scss"
-// @import "./components/estimated-card.scss";
-// @import "./components/footer.scss";
-// @import "./components/header.scss";
-// @import "./components/income.scss";
-// @import "./components/movement-card.scss";
-// @import "./components/summary_expenses_card.scss";
-// @import"./components/thumb-icons.scss";
-// @import"./components/Summary_creditCard.scss";
-// @import"./components/savings_card.scss";
-// @import"./components/handsUp-icon.scss";
-// @import"./components/creditCard_transactions_card.scss";
-// @import"./components/mostExpensive_card.scss";
-// @import"./components/topCategory_card.scss";
-// @import"./components/dropdown_types.scss";
-// @import"./components/NewEstimated_card.scss";
+@import "./components/Spinner.scss";
+@import "./components/Alert.scss";
+@import "./components/Dropdown.scss";
+

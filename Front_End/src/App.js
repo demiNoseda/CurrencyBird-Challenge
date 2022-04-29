@@ -17,12 +17,12 @@ function App() {
             element={<ReferralInvitationPage />}
           />
           <Route
-            path="/register/invite/:invitationId"
+            path="/register/invite/:invitationSerial"
             element={<InvitationalRegisterPage />}
           />
           <Route
             path="/register"
-            element={<RegisterForm invitationId={""} />}
+            element={<RegisterForm invitationSerial={""} />}
           />
           <Route path="/referral/summary" element={<ReferralSummaryPage />} />
         </Routes>

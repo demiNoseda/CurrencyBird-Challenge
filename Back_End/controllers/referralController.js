@@ -1,10 +1,12 @@
 import generateSerial from "../helpers/generateSerial.js";
 import User from "../models/User.js";
 import ReferralLink from "../models/ReferralLink.js";
+import sortListByTotalRewardAmount from "../helpers/sortListByTotalRewardAmount.js";
 
 const generateLink = async (req, res) => {
   console.log("GET /api/referral/generate-link");
   //generate a new referral link
+
   const { email, name } = req.body;
   const userExist = await User.findOne({ email, name });
 
@@ -29,7 +31,16 @@ const generateLink = async (req, res) => {
 const referrerList = async (req, res) => {
   console.log("GET /api/referral/referrer-list");
   const referrerList = await User.find().where("invitations").gt(0);
-  return res.json(referrerList);
+  let id = 1;
+  const result = referrerList.map(
+    ({ name, invitations, totalRewardAmount }) => ({
+      name,
+      invitations,
+      totalRewardAmount,
+      id: id++,
+    })
+  );
+  return res.json(result.sort(sortListByTotalRewardAmount)); //
 };
 
 export { generateLink, referrerList };

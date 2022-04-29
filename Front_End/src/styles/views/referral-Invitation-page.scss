@@ -28,7 +28,7 @@
     }
   }
   p{
-      color:$main-yellow;
+   
       margin: 2.9rem auto;
      
   }
@@ -46,5 +46,21 @@
   }
   .submit_btn:hover {
     background: $light-gray;
+  }
+  @media (max-width: 800px) { 
+    width: 100%;
+    h2{
+      padding:0 1rem;
+    }
+    form{
+      flex-direction: column;
+      input {
+        margin-bottom: 1rem;
+      }
+    }
+    .submit_btn {
+      width: 24rem;
+      height: 4rem;
+    }
   }
 }

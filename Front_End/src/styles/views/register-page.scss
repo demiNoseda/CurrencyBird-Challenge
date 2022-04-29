@@ -1,16 +1,29 @@
-.register_card{
-    @extend .referralInvitation_card;
-    width: 400px;
-    form {
-        flex-direction: column;
-        input {
-          margin-bottom:2rem;
-        }
-        select,option{
-            @extend input
-        }
-      }
-      .submit_btn {
-        width: 30%;
-      }
+.register_card {
+  @extend .referralInvitation_card;
+  width: 400px;
+
+  form {
+    flex-direction: column;
+
+    input {
+      margin-bottom: 2rem;
+    }
+
+    select,
+    option {
+      @extend input
+    }
+  }
+
+  .submit_btn {
+    width: 30%;
+  }
+
+  @media (max-width: $max-width-rs) { 
+    width:100%;
+    .submit_btn {
+      width: 24rem;
+      height: 4rem;
+    }
+  }
 }

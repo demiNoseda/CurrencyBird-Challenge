@@ -1,43 +1,64 @@
 import { useState } from "react";
+import Alert from "../../../components/Alert";
 import Spinner from "../../../components/Spinner";
+import { postRegisterUser } from "../../../helpers/service";
+import Dropdown from "./Dropdown";
 
-const RegisterForm = ({ invitationId }) => {
+const RegisterForm = ({ invitationSerial }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [sex, setSex] = useState("");
+  const [sex, setSex] = useState("Sex");
   const [address, setAddress] = useState("");
   const [spinner, setSpinner] = useState(false);
-  const [referralUrl, setReferralUrl] = useState("");
-  const [error, setError] = useState(false);
+  const [alert, setAlert] = useState({
+    msg: "",
+    error: false,
+    showAlert: false,
+  });
 
-  const handleChange = (e) => {
-    switch (e.target.type) {
-      case "name":
-        setName(e.target.value);
-        break;
-      case "email":
-        setEmail(e.target.value);
-        break;
-      case "address":
-        setAddress(e.target.value);
-        break;
-      case "sex":
-        setSex(e.target.value);
-        break;
-      default:
-        break;
+  const handleSubmit = async () => {
+    if (name !== "" && email !== "" && address !== "" && sex !== "") {
+      setSpinner(true);
+      setAlert({ ...alert, showAlert: false });
+      try {
+        const body = {
+          name,
+          email,
+          address,
+          sex,
+          serial: invitationSerial ? invitationSerial : "",
+        };
+        const response = await postRegisterUser(body);
+
+        if (response.msg === "The user was registered successfully") {
+          setAlert({
+            msg: "Te has registrado correctamente",
+            error: false,
+            showAlert: true,
+          });
+        }
+        setSpinner(false);
+        // setName("");
+        // setEmail("");
+        // setSex("");
+        // setAddress("");
+      } catch (error) {
+        setSpinner(false);
+        if (error.message === "The user already exists");
+        setAlert({
+          msg: "El email ya se encuentra registrado",
+          error: true,
+          showAlert: true,
+        });
+        console.log(error);
+      }
+    } else {
+      setAlert({
+        msg: "Por favor completa los campos para registrarte",
+        error: true,
+        showAlert: true,
+      });
     }
-    console.log(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    console.log("Submittt");
-    setSpinner(true);
-    setTimeout(() => {
-      setSpinner(false);
-      // setError(true);
-      setReferralUrl("Test12345.com");
-    }, 3000);
   };
   return (
     <div className="register_card">
@@ -48,40 +69,48 @@ const RegisterForm = ({ invitationId }) => {
           name="name"
           placeholder="Nombre completo"
           value={name}
-          onChange={handleChange}
+          onChange={(e) => {
+            e.preventDefault();
+            setName(e.target.value);
+          }}
+          required
+          className="text_bg"
         />
         <input
           type="email"
           name="email"
           placeholder="Email"
           value={email}
-          onChange={handleChange}
+          onChange={(e) => {
+            e.preventDefault();
+            setEmail(e.target.value);
+          }}
+          required
+          className="text_bg"
         />
         <input
           type="text"
           name="address"
           placeholder="Dirección"
           value={address}
-          onChange={handleChange}
+          onChange={(e) => {
+            e.preventDefault();
+            setAddress(e.target.value);
+          }}
+          required
+          className="text_bg"
         />
-        <select onChange={handleChange}  name="sex" id="sex">
-          <option disabled hidden selected value="Femenino">
-            Sexo
-          </option>
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
-        </select>
+
+        <div className="form_dropdown">
+          <Dropdown selected={sex} setSelected={setSex} />
+        </div>
       </form>
       {spinner ? (
         <Spinner />
-      ) : error ? (
-        <p className="title_sm error">
-          Lo siento, el email no se encuentra registrado
-        </p>
-      ) : referralUrl ? (
-        <p className="title_sm">{referralUrl}</p>
+      ) : alert.showAlert ? (
+        <Alert msg={alert.msg} error={alert.error} />
       ) : null}
-      <button onClick={handleSubmit} className="text_sm submit_btn">
+      <button onClick={handleSubmit} className="text_md submit_btn">
         Registrarse
       </button>
     </div>

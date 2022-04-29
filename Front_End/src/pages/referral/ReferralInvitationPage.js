@@ -72,10 +72,7 @@ const ReferralInvitationPage = () => {
           type="text"
           placeholder="Ingresa tu nombre completo"
           value={name}
-          onChange={(e) => {
-            e.preventDefault();
-            setName(e.target.value);
-          }}
+          onChange={(e) => setName(e.target.value)}
         />
       </form>
       {spinner ? (

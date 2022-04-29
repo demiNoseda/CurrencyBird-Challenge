@@ -29,8 +29,7 @@ const RegisterForm = ({ invitationSerial }) => {
           serial: invitationSerial ? invitationSerial : "",
         };
         const response = await postRegisterUser(body);
-
-        if (response.msg === "The user was registered successfully") {
+        if (response.data.msg === "The user was registered successfully") {
           setAlert({
             msg: "Te has registrado correctamente",
             error: false,
@@ -63,16 +62,13 @@ const RegisterForm = ({ invitationSerial }) => {
   return (
     <div className="register_card">
       <h1 className="title_sm">Formulario de Registro</h1>
-      <form className="text_bg" onSubmit={handleSubmit}>
+      <form className="text_bg" onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           name="name"
           placeholder="Nombre completo"
           value={name}
-          onChange={(e) => {
-            e.preventDefault();
-            setName(e.target.value);
-          }}
+          onChange={(e) => setName(e.target.value)}
           required
           className="text_bg"
         />
@@ -81,10 +77,7 @@ const RegisterForm = ({ invitationSerial }) => {
           name="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => {
-            e.preventDefault();
-            setEmail(e.target.value);
-          }}
+          onChange={(e) => setEmail(e.target.value)}
           required
           className="text_bg"
         />
@@ -93,14 +86,10 @@ const RegisterForm = ({ invitationSerial }) => {
           name="address"
           placeholder="Dirección"
           value={address}
-          onChange={(e) => {
-            e.preventDefault();
-            setAddress(e.target.value);
-          }}
+          onChange={(e) => setAddress(e.target.value)}
           required
           className="text_bg"
         />
-
         <div className="form_dropdown">
           <Dropdown selected={sex} setSelected={setSex} />
         </div>

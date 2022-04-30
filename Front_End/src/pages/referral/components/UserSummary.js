@@ -1,9 +1,6 @@
 import { addCommas } from "../../../helpers/addCommas";
 
 const UserSummary = ({ name, invitations, totalAmount }) => {
-
-
-
   return (
     <li className="user_row">
       <p className="name_column" style={{ flexBasis: "50%" }}>

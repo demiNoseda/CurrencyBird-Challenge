@@ -1,41 +1,17 @@
-*{
-    padding: 0;
-    margin:0;
-    box-sizing: border-box;
-    font-size: 62.5%;
-    }
-  body{
-    background-color: #dad5d5da;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
 
- main {
-    font-family: Circular Std;
-  }
-  
+body {
+  background-color: #dad5d5da;
+}
 
-
-
-
-  // @media (min-width: 710px) { 
- 
-  // }
-  
-  // .MuiAvatar-img{
-  //   -webkit-font-smoothing: antialiased;
-  //   font-weight: 400;
-  //   font-size: 1.25rem;
-  //   font-family: 'Montserrat';
-  //   line-height: 1;
-  //   user-select: none;
-  //   box-sizing: inherit;
-  //   color: transparent;
-  //   width: 40%;
-  //   height: 100%;
-  //   object-fit: cover;
-  //   text-align: center;
-  //   text-indent: 10000px;
-  // }
-
+main {
+  font-family: Circular Std;
+}
 
 //--------- Variables --------------
 $main-green:#1A9986;
@@ -48,8 +24,8 @@ $max-width-rs: 710px;
 $main-blue:#074F71;
 $dark-gray: #8F8F8F;
 
-@media (max-width: $max-width-rs) { 
-}
+@media (max-width: $max-width-rs) {}
+
 //--------- Fonts --------------
 @import "./fonts/fonts.scss";
 
@@ -67,4 +43,3 @@ $dark-gray: #8F8F8F;
 @import "./components/Spinner.scss";
 @import "./components/Alert.scss";
 @import "./components/Dropdown.scss";
-

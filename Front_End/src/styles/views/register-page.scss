@@ -19,8 +19,9 @@
     width: 30%;
   }
 
-  @media (max-width: $max-width-rs) { 
-    width:100%;
+  @media (max-width: $max-width-rs) {
+    width: 100%;
+
     .submit_btn {
       width: 24rem;
       height: 4rem;

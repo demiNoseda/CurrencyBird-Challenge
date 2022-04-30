@@ -3,14 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReferralInvitationPage from "./pages/referral/ReferralInvitationPage";
 import InvitationalRegisterPage from "./pages/register/InvitationalRegisterPage";
 import RegisterForm from "./pages/register/components/RegisterForm";
-import Navbar from "./components/Navbar";
 import ReferralSummaryPage from "./pages/referral/ReferralSummaryPage";
 
 function App() {
   return (
     <main>
       <BrowserRouter>
-        {/* <Navbar /> */}
         <Routes>
           <Route
             path="/referral/invitation"

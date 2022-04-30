@@ -1,45 +1,57 @@
 @font-face {
-    font-family: Circular Std;
-    src: url(../../assets/fonts/CircularStd-Book.ttf)
-  }
+  font-family: Circular Std;
+  src: url(../../assets/fonts/CircularStd-Book.ttf)
+}
 
 //-----Text------
-span{
+span {
   font-weight: bold;
 }
-.title_bg{
+
+.title_bg {
   font-size: 4rem;
-  span{
-      font-size:  4rem;
+
+  span {
+    font-size: 4rem;
   }
 }
-.title_md{
+
+.title_md {
   font-size: 2.4rem;
-  span{
-      font-size:  2.4rem;
+
+  span {
+    font-size: 2.4rem;
   }
 }
-.title_sm{
+
+.title_sm {
   font-size: 1.8rem;
-  span{
-      font-size:  1.8rem;
+
+  span {
+    font-size: 1.8rem;
   }
 }
-.text_bg{
+
+.text_bg {
   font-size: 1.6rem;
-  span{
-      font-size:  1.6rem;
+
+  span {
+    font-size: 1.6rem;
   }
 }
-.text_md{
+
+.text_md {
   font-size: 1.4rem;
-  span{
-      font-size:  1.4rem;
+
+  span {
+    font-size: 1.4rem;
   }
 }
-.text_sm{
+
+.text_sm {
   font-size: 1.2rem;
-  span{
-      font-size:  1.2rem;
+
+  span {
+    font-size: 1.2rem;
   }
 }

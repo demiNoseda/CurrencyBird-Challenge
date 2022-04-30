@@ -40,7 +40,7 @@ const ReferralSummaryPage = () => {
       }
     };
     requestApi();
-  }, []);
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="referralSummary_card">

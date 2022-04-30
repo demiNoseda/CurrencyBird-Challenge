@@ -41,14 +41,14 @@ const Dropdown = ({ selected, setSelected }) => {
       <div data-testid="dropdownMenu" className="dropdown-menu ">
         <div className="dropdown-links">
           {options.map((option) => (
-            <a
+            <p
               onClick={handleChange}
               style={option === selected ? style_selected : null}
               className="link text_bg"
               key={option.id}
             >
               {option.name}
-            </a>
+            </p>
           ))}
         </div>
       </div>

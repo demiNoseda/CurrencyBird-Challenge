@@ -14,7 +14,7 @@ const ReferralInvitationPage = () => {
     error: false,
     showAlert: false,
   });
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const handleSubmit = async () => {
     setSpinner(true);
@@ -83,7 +83,7 @@ const ReferralInvitationPage = () => {
       ) : null}
       {!spinner && !alert.showAlert && referralURL !== "" ? (
         <div className="alert">
-          <a href={referralURL} className="text_md" target="_blank">
+          <a href={referralURL} rel="noreferrer" className="text_md" target="_blank">
             {width <= 710 && referralURL.length > 10
               ? referralURL.substring(0, 24) + "..."
               : referralURL}

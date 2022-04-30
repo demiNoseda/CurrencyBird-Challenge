@@ -24,11 +24,9 @@ const ReferralInvitationPage = () => {
           name,
           email,
         };
-        console.log("HELOOOOOO ", body);
         const response = await postReferralLink(body);
         setSpinner(false);
         setAlert({ ...alert, showAlert: false });
-        console.log(response.data);
         const baseURL = process.env.REACT_APP_FRONTEND_URL;
         setReferralURL(`${baseURL}/register/invite/${response.data}`);
       } catch (error) {

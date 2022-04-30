@@ -37,5 +37,5 @@ app.use("/api/referral", checkAuth, referralRoutes);
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Server running on port: ${PORT}`);
 });

@@ -1,6 +1,4 @@
 const checkAuth = (req, res, next) => {
-  console.log(req.headers.authorization);
-  console.log(req.body);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer") &&

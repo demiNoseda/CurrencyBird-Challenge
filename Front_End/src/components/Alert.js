@@ -3,7 +3,7 @@ const Alert = ({ msg, error }) => {
     color: error ? "#f5222d" : "#074F71",
   };
   return (
-    <div className="alert" style={styles}>
+    <div data-testid="alert" className="alert" style={styles}>
       <p className="text_md">{msg}</p>
     </div>
   );

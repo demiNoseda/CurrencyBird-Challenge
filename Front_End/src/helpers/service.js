@@ -9,11 +9,6 @@ const header = {
 };
 
 export const postRegisterUser = (body) => {
-  console.log(
-    ` asssssssssssssss ${baseURL}/api/referral/generate-link`,
-    body,
-    header
-  );
   return axios.post(`${baseURL}/api/users`, body, header);
 };
 

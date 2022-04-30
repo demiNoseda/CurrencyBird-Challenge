@@ -30,6 +30,7 @@ const Dropdown = ({ selected, setSelected }) => {
       data-dropdown
     >
       <button
+        data-testid="sexDropdown"
         onClick={handleOpenDropdown}
         className="link text_bg"
         data-dropdown-button
@@ -37,7 +38,7 @@ const Dropdown = ({ selected, setSelected }) => {
         {selected}
         <Arrow />
       </button>
-      <div className="dropdown-menu ">
+      <div data-testid="dropdownMenu" className="dropdown-menu ">
         <div className="dropdown-links">
           {options.map((option) => (
             <a

@@ -42,12 +42,21 @@ const RegisterForm = ({ invitationSerial }) => {
       // setAddress("");
     } catch (error) {
       setSpinner(false);
-      if (error.message === "The user already exists");
-      setAlert({
-        msg: "El email ya se encuentra registrado",
-        error: true,
-        showAlert: true,
-      });
+      if (error.message === "The user already exists") {
+        setAlert({
+          msg: "El email ya se encuentra registrado",
+          error: true,
+          showAlert: true,
+        });
+      } else {
+        if (error.message === "Network Error") {
+          setAlert({
+            msg: "No se pudo conectar con el servidor",
+            error: true,
+            showAlert: true,
+          });
+        }
+      }
       console.log(error);
     }
   };

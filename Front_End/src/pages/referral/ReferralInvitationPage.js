@@ -17,34 +17,35 @@ const ReferralInvitationPage = () => {
   const { height, width } = useWindowDimensions();
 
   const handleSubmit = async () => {
-    if (name !== "" && email !== "") {
-      setSpinner(true);
-      try {
-        const body = {
-          name,
-          email,
-        };
-        const response = await postReferralLink(body);
-        setSpinner(false);
-        setAlert({ ...alert, showAlert: false });
-        const baseURL = process.env.REACT_APP_FRONTEND_URL;
-        setReferralURL(`${baseURL}/register/invite/${response.data}`);
-      } catch (error) {
-        setSpinner(false);
-        if (error.message === "The user doesn't exists");
+    setSpinner(true);
+    try {
+      const body = {
+        name,
+        email,
+      };
+      const response = await postReferralLink(body);
+      setSpinner(false);
+      setAlert({ ...alert, showAlert: false });
+      const baseURL = process.env.REACT_APP_FRONTEND_URL;
+      setReferralURL(`${baseURL}/register/invite/${response.data}`);
+    } catch (error) {
+      setSpinner(false);
+      if (error.message === "The user doesn't exists") {
         setAlert({
           msg: "Email o Nombre incorrecto, por favor revisa los campos",
           error: true,
           showAlert: true,
         });
-        console.log(error);
+      } else {
+        if (error.message === "Network Error") {
+          setAlert({
+            msg: "No se pudo conectar con el servidor",
+            error: true,
+            showAlert: true,
+          });
+        }
       }
-    } else {
-      setAlert({
-        msg: "Por favor completa los campos",
-        error: true,
-        showAlert: true,
-      });
+      console.log(error);
     }
   };
 
@@ -56,6 +57,7 @@ const ReferralInvitationPage = () => {
       </h2>
       <form onSubmit={handleSubmit}>
         <input
+          data-testid="emailInput"
           className="text_bg"
           type="email"
           placeholder="Ingresa tu e-mail"
@@ -66,6 +68,7 @@ const ReferralInvitationPage = () => {
           }}
         />
         <input
+          data-testid="nameInput"
           className="text_bg"
           type="text"
           placeholder="Ingresa tu nombre completo"
@@ -87,7 +90,12 @@ const ReferralInvitationPage = () => {
           </a>
         </div>
       ) : null}
-      <button onClick={handleSubmit} className="text_md submit_btn">
+      <button
+        disabled={name === "" || email === ""}
+        data-testid="buttonSubmit"
+        onClick={handleSubmit}
+        className="text_md submit_btn"
+      >
         Compartir
       </button>
     </div>

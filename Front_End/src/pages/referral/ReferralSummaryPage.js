@@ -13,7 +13,6 @@ const ReferralSummaryPage = () => {
     showAlert: false,
   });
 
-
   useEffect(() => {
     const requestApi = async () => {
       setSpinner(true);
@@ -33,7 +32,7 @@ const ReferralSummaryPage = () => {
       } catch (error) {
         setSpinner(false);
         setAlert({
-          msg: "No se puedieron traer ningun dato",
+          msg: "No se pudo traer ningun dato",
           error: true,
           showAlert: true,
         });
@@ -42,7 +41,7 @@ const ReferralSummaryPage = () => {
     };
     requestApi();
   }, []);
-  
+
   return (
     <div className="referralSummary_card">
       <div className="expenses_list">

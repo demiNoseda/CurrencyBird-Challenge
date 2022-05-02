@@ -1,6 +1,57 @@
-# Getting Started with Create React App
+# Getting Started with FullStack CurrencyBird-Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This challenge requires to done a referrer system.
+Was created using the MERN stack.
+
+### In this challenge the requirements are:
+
+*Backend
+*Database
+*FrontEnd
+**Register page
+**"Generate referrer link" page
+**"Referrer sumarry" page
+**Register page with referal link
+
+## Key Topics
+
+1. Configuration steps to run the project
+   *Env Front_End Variables && Scripts
+   *Env Back_End Variables && Scripts
+2. Description of the routes
+   *Front_End
+   **Register page
+   **Register page using invitation code
+   **Generate referal invitation page
+   **Referral summary page
+   *Back_End
+   ** register ENP
+   ** generate referral link ENP
+   ** Referral summary ENP
+3. mongo DB
+   *Collections
+
+# 1. Configuration steps to run the project
+
+To execute the project you will need to install dependencies ,run this command in the Front_End & Back_End root folder:
+
+### `npm i`
+
+## ENV Variables
+
+This project uses dotENV variables so you will need:
+
+## Front End
+
+- create a file called ".env" inside the root folder "/Front_End"
+
+you will need to create this variables:
+
+### `REACT_APP_BACKEND_URL`
+
+### `REACT_APP_FRONTEND_UR`
+
+### `REACT_APP_AUTHORIZATION_API=<<Your Authorization Password>>`
 
 ## Available Scripts
 
@@ -16,8 +67,7 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -27,44 +77,96 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Back End
 
-### `npm run eject`
+create a file called ".env" inside the root folder "/Back_End"
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+you will need to create this variables:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `MONGO_URI=`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- put your URI of mongoDB
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `FRONTEND_URL`
 
-## Learn More
+### `MONGO_URI_TEST=<<URI of DB used to do testing>>`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- put your URI of mongoDB used to do testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Available Scripts
 
-### Code Splitting
+In the project directory, you can run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `npm start`
 
-### Analyzing the Bundle Size
+Runs the server in production mode mode using nodemon
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### `npm run dev`
 
-### Making a Progressive Web App
+Runs the server in development mode using nodemon
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### `npm test`
 
-### Advanced Configuration
+Launches the test runner.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 2. Description of the routes
 
-### Deployment
+Here are the routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Front_End
 
-### `npm run build` fails to minify
+###Register page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+URL "http://localhost:3000/register"
+
+###Register page using invitation code
+
+URL "http://localhost:3000/referral/invitation/<<invitation Serial>>"
+
+###Generate referal invitation
+
+URL "http://localhost:3000/referral/invitation"
+
+###Referral summary page
+
+URL "http://localhost:3000/referral/summary"
+
+## Back_End
+
+### register ENP
+
+URL "http://localhost:4000/api/users", uses bearer token for authorization
+
+*Type POST
+
+*Creates a user without duplicating it
+
+### generate referral link ENP
+
+URL: "http://localhost:4000/api/referral/generate-link", uses bearer token for authorization
+
+*Type POST
+
+*Creates a unique invitation code and returns it
+
+### referrer list ENP
+
+URL "http://localhost:4000/api/referral/referrer-list", uses bearer token for authorization
+
+*Type GET
+
+*Returns the list with the referrer wich
+
+# 3. mongo DB
+
+Resume of the database model
+
+## Collections
+
+### `users`
+
+*keeps the data of the users
+
+### `referrallinks`
+
+*keeps the data of the referral's codes and the reference to the owner's id

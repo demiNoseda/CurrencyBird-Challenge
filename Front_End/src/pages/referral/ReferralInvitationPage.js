@@ -43,6 +43,12 @@ const ReferralInvitationPage = () => {
             error: true,
             showAlert: true,
           });
+        } else {
+          setAlert({
+            msg: "No se pudo generar el link",
+            error: true,
+            showAlert: true,
+          });
         }
       }
       console.log(error);

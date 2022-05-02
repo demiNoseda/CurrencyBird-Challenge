@@ -55,6 +55,12 @@ const RegisterForm = ({ invitationSerial }) => {
             error: true,
             showAlert: true,
           });
+        } else {
+          setAlert({
+            msg: "No se pudo registrar",
+            error: true,
+            showAlert: true,
+          });
         }
       }
       console.log(error);

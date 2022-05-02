@@ -5,65 +5,85 @@ Was created using the MERN stack.
 
 ### In this challenge the requirements are:
 
-*Backend
-*Database
-*FrontEnd
-**Register page
-**"Generate referrer link" page
-**"Referrer sumarry" page
-**Register page with referal link
+* Backend
+* Database
+* FrontEnd
+
+  - Register page
+
+  - "Generate referrer link" page
+
+  - "Referrer sumarry" page
+
+  - Register page with referal link
+
+***
 
 ## Key Topics
 
 1. Configuration steps to run the project
-   *Env Front_End Variables && Scripts
-   *Env Back_End Variables && Scripts
+
+   * Env Front_End Variables && Scripts
+
+   * Env Back_End Variables && Scripts
 2. Description of the routes
-   *Front_End
-   **Register page
-   **Register page using invitation code
-   **Generate referal invitation page
-   **Referral summary page
-   *Back_End
-   ** register ENP
-   ** generate referral link ENP
-   ** Referral summary ENP
+
+   * Front_End
+
+     * Register page
+
+     * Register page using invitation code
+
+     * Generate invitation link
+
+     * Referral summary page
+
+   * Back_End
+
+     * register ENP
+
+     * generate referral link ENP
+
+     * Referral summary ENP
+
 3. mongo DB
-   *Collections
+
+   * Collections
+
+***
 
 # 1. Configuration steps to run the project
 
-To execute the project you will need to install dependencies ,run this command in the Front_End & Back_End root folder:
+To execute the project you will need to install dependencies ,run this command in the Front_End root folder and do the same with the Back_End folder:
 
 ### `npm i`
 
 ## ENV Variables
 
-This project uses dotENV variables so you will need:
+This project uses ENV variables so you will need to follow this steps:
+
+***
 
 ## Front End
 
-- create a file called ".env" inside the root folder "/Front_End"
+create a file called ".env" inside the root folder "/Front_End"
 
 you will need to create this variables:
 
-### `REACT_APP_BACKEND_URL`
+### `REACT_APP_BACKEND_URL= <<Back End URL>>`
 
-### `REACT_APP_FRONTEND_UR`
+### `REACT_APP_FRONTEND_URL= <<Front End URL>>`
 
-### `REACT_APP_AUTHORIZATION_API=<<Your Authorization Password>>`
+### `REACT_APP_AUTHORIZATION_API= <<Bearer token>>`
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the root of Front_End directory, you can run:
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
@@ -74,8 +94,7 @@ Launches the test runner in the interactive watch mode.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***
 
 ## Back End
 
@@ -83,19 +102,15 @@ create a file called ".env" inside the root folder "/Back_End"
 
 you will need to create this variables:
 
-### `MONGO_URI=`
+### `MONGO_URI= <<URI of DB>>`
 
-- put your URI of mongoDB
+### `FRONTEND_URL= <<Front End Url>`
 
-### `FRONTEND_URL`
-
-### `MONGO_URI_TEST=<<URI of DB used to do testing>>`
-
-- put your URI of mongoDB used to do testing
+### `MONGO_URI_TEST= <<URI of DB used to do testing>>`
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the root of Back_End directory, you can run:
 
 ### `npm start`
 
@@ -115,47 +130,59 @@ Here are the routes
 
 ## Front_End
 
-###Register page
+### `Register page`
 
 URL "http://localhost:3000/register"
 
-###Register page using invitation code
+### `Register page using invitation code`
 
-URL "http://localhost:3000/referral/invitation/<<invitation Serial>>"
+URL "http://localhost:3000/register/invite/*<< Invitation's code >>*"
 
-###Generate referal invitation
+### `Generate invitation link`
 
 URL "http://localhost:3000/referral/invitation"
 
-###Referral summary page
+### `Referral summary page`
 
 URL "http://localhost:3000/referral/summary"
 
+***
+
 ## Back_End
 
-### register ENP
+### `register ENP`
 
-URL "http://localhost:4000/api/users", uses bearer token for authorization
+URL "http://localhost:4000/api/users" 
 
-*Type POST
+* Type: POST
 
-*Creates a user without duplicating it
+* Uses bearer token for authorization
 
-### generate referral link ENP
+* Creates a user without duplicating it
 
-URL: "http://localhost:4000/api/referral/generate-link", uses bearer token for authorization
+* Receives the user data
 
-*Type POST
+### `generate referral link ENP`
 
-*Creates a unique invitation code and returns it
+URL: "http://localhost:4000/api/referral/generate-link" 
 
-### referrer list ENP
+* Type: POST
 
-URL "http://localhost:4000/api/referral/referrer-list", uses bearer token for authorization
+* Uses bearer token for authorization
 
-*Type GET
+* Creates a unique invitation code and returns it
 
-*Returns the list with the referrer wich
+* Receives email and name from a user 
+
+### `referrer list ENP`
+
+URL "http://localhost:4000/api/referral/referrer-list" 
+
+* Type: GET
+
+* Uses bearer token for authorization
+
+* Returns the list with the Users which successfully referred new users
 
 # 3. mongo DB
 
@@ -165,8 +192,8 @@ Resume of the database model
 
 ### `users`
 
-*keeps the data of the users
+* keeps the data of the users
 
 ### `referrallinks`
 
-*keeps the data of the referral's codes and the reference to the owner's id
+* keeps the data of the referral's codes and the reference to the owner's id

@@ -36,22 +36,22 @@ const RegisterForm = ({ invitationSerial }) => {
         });
       }
       setSpinner(false);
-      // setName("");
-      // setEmail("");
-      // setSex("");
-      // setAddress("");
+      setName("");
+      setEmail("");
+      setSex("Sex");
+      setAddress("");
     } catch (error) {
       setSpinner(false);
-      if (error.message === "The user already exists") {
+      if (error.message === "Network Error") {
         setAlert({
-          msg: "El email ya se encuentra registrado",
+          msg: "No se pudo conectar con el servidor",
           error: true,
           showAlert: true,
         });
       } else {
-        if (error.message === "Network Error") {
+        if (error.response.data.msg === "The user already exists") {
           setAlert({
-            msg: "No se pudo conectar con el servidor",
+            msg: "El email ya se encuentra registrado",
             error: true,
             showAlert: true,
           });

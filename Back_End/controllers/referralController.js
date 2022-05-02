@@ -21,6 +21,8 @@ const generateLink = async (req, res) => {
       return res.json(referralLinkSaved.serial);
     } catch (error) {
       console.log(error);
+      const errorAux = new Error("Unexpected error from the DB");
+      return res.status(500).json({ msg: errorAux.message });
     }
   } else {
     const error = new Error("The user doesn't exists");
@@ -30,17 +32,24 @@ const generateLink = async (req, res) => {
 
 const referrerList = async (req, res) => {
   console.log("GET /api/referral/referrer-list");
-  const referrerList = await User.find().where("invitations").gt(0);
-  let id = 1;
-  const result = referrerList.map(
-    ({ name, invitations, totalRewardAmount }) => ({
-      name,
-      invitations,
-      totalRewardAmount,
-      id: id++,
-    })
-  );
-  return res.json(result.sort(sortListByTotalRewardAmount)); //
+
+  //Brings the list of users which referrer successfully
+  try {
+    const referrerList = await User.find().where("invitations").gt(0);
+    let id = 1;
+    const result = referrerList.map(
+      ({ name, invitations, totalRewardAmount }) => ({
+        name,
+        invitations,
+        totalRewardAmount,
+        id: id++,
+      })
+    );
+    return res.json(result.sort(sortListByTotalRewardAmount)); //
+  } catch (error) {
+    const erros = new Error("No users found");
+    return res.status(404).json({ msg: erros.message });
+  }
 };
 
 export { generateLink, referrerList };

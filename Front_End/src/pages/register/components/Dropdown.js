@@ -41,14 +41,15 @@ const Dropdown = ({ selected, setSelected }) => {
       <div data-testid="dropdownMenu" className="dropdown-menu ">
         <div className="dropdown-links">
           {options.map((option) => (
-            <p
+            // eslint-disable-next-line
+            <a
               onClick={handleChange}
               style={option === selected ? style_selected : null}
               className="link text_bg"
               key={option.id}
             >
               {option.name}
-            </p>
+            </a>
           ))}
         </div>
       </div>

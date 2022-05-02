@@ -30,16 +30,16 @@ const ReferralInvitationPage = () => {
       setReferralURL(`${baseURL}/register/invite/${response.data}`);
     } catch (error) {
       setSpinner(false);
-      if (error.message === "The user doesn't exists") {
+      if (error.message === "Network Error") {
         setAlert({
-          msg: "Email o Nombre incorrecto, por favor revisa los campos",
+          msg: "No se pudo conectar con el servidor",
           error: true,
           showAlert: true,
         });
       } else {
-        if (error.message === "Network Error") {
+        if (error.response.data.msg === "The user doesn't exists") {
           setAlert({
-            msg: "No se pudo conectar con el servidor",
+            msg: "Email o Nombre incorrecto, por favor revisa los campos",
             error: true,
             showAlert: true,
           });
@@ -83,7 +83,12 @@ const ReferralInvitationPage = () => {
       ) : null}
       {!spinner && !alert.showAlert && referralURL !== "" ? (
         <div className="alert">
-          <a href={referralURL} rel="noreferrer" className="text_md" target="_blank">
+          <a
+            href={referralURL}
+            rel="noreferrer"
+            className="text_md"
+            target="_blank"
+          >
             {width <= 710 && referralURL.length > 10
               ? referralURL.substring(0, 24) + "..."
               : referralURL}
